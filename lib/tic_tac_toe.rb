@@ -143,8 +143,9 @@ end
     end
     if won?
       winner_winner_chicken_dinner = won?
-      character = @board[winner_winner_chicken_dinner[0]]
-      puts "Congratulations #{character}!"
+      
+        character = @board[winner_winner_chicken_dinner[0]]
+        puts "Congratulations #{character}!"
     elsif draw?
       puts "Cat's Game!"
     end
