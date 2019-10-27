@@ -1,7 +1,18 @@
 class TicTacToe
-  
-  def initialize(board = nil)
+=begin
+#same as below
+def initialize(board = nil)
+  if board != nil
+    @board = board
+  else
+    @board = Array.new(9, " ")
+  end
+end
+=end
+  def initialize(board = nil) #default is no board given
     @board = board || Array.new(9, " ")
+    #if not given a board, we use new board.
+
   end
   
   WIN_COMBINATIONS = [
@@ -56,6 +67,18 @@ class TicTacToe
     @board.count{|token| token == "X" || token == "O"}
   end
  
+=begin
+#same as below
+   def current_player
+    remainder = turn_count % 2
+    if remainder == 0
+      return "X"
+    else
+      return "O"
+    end
+  end
+=end
+
   def current_player
     turn_count % 2 == 0 ? "X" : "O"
   end
@@ -93,7 +116,7 @@ class TicTacToe
       else
         return false
       end
-    else won?
+    else 
       false
     end
   end
@@ -105,7 +128,7 @@ class TicTacToe
   end
   
   def winner
-    result = won? 
+    result = won? # <= giving back winning pattern
     if result == nil 
       return nil
     else
@@ -115,17 +138,13 @@ class TicTacToe
   end
   
   def play
-    until over?
+    until over? # keep repeating until game is over
       turn
     end
     if won?
       winner_winner_chicken_dinner = won?
-      if winner_winner_chicken_dinner == true
-        puts "Congratulations"
-      else
-        character = @board[winner_winner_chicken_dinner[0]]
-        puts "Congratulations #{character}!"
-      end
+      character = @board[winner_winner_chicken_dinner[0]]
+      puts "Congratulations #{character}!"
     elsif draw?
       puts "Cat's Game!"
     end
